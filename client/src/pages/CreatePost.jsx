@@ -16,9 +16,9 @@ const CreatePost = () => {
 		if(form.prompt){
 			try {
 				setGeneratingImg(true);
-				console.log('11')
+				//console.log('11')
 
-				const response = await fetch('http://localhost:8080/api/v1/dalle', {
+				const response = await fetch('https://ai-imaging.onrender.com/api/v1/dalle', {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
@@ -26,7 +26,7 @@ const CreatePost = () => {
 					body: JSON.stringify({ prompt: form.prompt}),
 				})
 
-				console.log('22')
+				//console.log('22')
 
 				const data = await response.json();
         		setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
@@ -48,7 +48,7 @@ const CreatePost = () => {
 		if(form.prompt && form.photo){
 			setLoading(true);
 			try {
-				const response = await fetch('http://localhost:8080/api/v1/post', {
+				const response = await fetch('https://ai-imaging.onrender.com/api/v1/post', {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
